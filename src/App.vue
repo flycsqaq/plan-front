@@ -1,25 +1,36 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <LayoutHeader :style="{ backgroundColor: bgColor }" />
+    <div class="content-container">
+      <main>
+        <router-view />
+      </main>
+      <LayoutSidebar class="sidebar" />
     </div>
-    <router-view/>
+    <LayoutFooter :style="{ backgroundColor: bgColor }" />
   </div>
 </template>
-<style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
+<script>
+import LayoutHeader from '@/views/layout/header.vue'
+import LayoutFooter from '@/views/layout/footer.vue'
+import LayoutSidebar from '@/views/layout/sidebar.vue'
+import { mapGetters } from 'vuex'
 
-#nav
-  padding 30px
-  a
-    font-weight bold
-    color #2c3e50
-    &.router-link-exact-active
-      color #42b983
+export default {
+  name: 'App',
+  components: {
+    LayoutHeader,
+    LayoutFooter,
+    LayoutSidebar
+  },
+  computed: {
+    ...mapGetters(['color']),
+    bgColor() {
+      return this.color[0]
+    }
+  }
+}
+</script>
+
+<style lang="stylus">
 </style>

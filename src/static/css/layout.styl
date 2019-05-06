@@ -1,0 +1,78 @@
+html
+  font-size 100%
+  background mainbg
+  #app
+    min-height 100vh
+    display flex
+    flex-flow column
+    flex-wrap wrap
+    header
+      width 100%
+      box-sizing border-box
+      position fixed
+      top 0
+      height headerHeight
+      padding 0 calc(50% - 700px)
+      z-index 2000
+      margin 0
+      nav
+        height inherit
+        ul
+          margin 0
+    .content-container
+      box-sizing border-box
+      margin-top headerHeight
+      padding 10px calc(50% - 700px)
+      display flex
+      width 100%
+      flex 1
+      main
+        flex 1
+        padding 0 5px
+      .sidebar
+        flex-basis 200px
+        padding 0 5px
+    footer
+      height footerHeight
+      width 100%
+
+for l in layout
+  m = l[0]
+  w = l[1]
+  f = l[2]
+  @media (max-width: unit(m, 'px'))
+    html
+      font-size f
+      header
+        padding 0 "calc(50% - %s)" % unit(w/2, 'px')
+      .content-container
+        padding 5px "calc(50% - %s)" % unit(w/2, 'px')
+
+@media (max-width: 800px)
+  html
+    font-size 80%
+    header
+      padding 0
+    .content-container
+      padding 5px 0 
+      .sidebar
+        position absolute
+        right 10px
+        .nav
+          display inline-block
+          cursor pointer
+          float right
+          transform rotate(90deg)
+          &>span
+            display block
+            width 20px
+            height 5px
+            border none
+            border-bottom 2px solid btt
+        .side-content
+          display none
+        &:hover
+          .nav
+            transform rotate(0deg)
+          .side-content
+            display inline-block

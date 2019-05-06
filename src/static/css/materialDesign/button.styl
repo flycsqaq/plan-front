@@ -1,0 +1,35 @@
+button
+  cursor pointer
+  position relative
+  color white
+  padding .3em .8em
+  border none
+  outline none
+  transition all 1s linear
+  width inherit
+  font-size 100%
+  line-height 1.5
+  text-shadow 0 .05em .25em #335166
+  &:hover
+    transition all 1s linear
+  &::after
+    content: ''
+    position absolute
+    left -5px
+    right -5px
+    top -5px
+    bottom -5px
+  &.delete
+    float right
+
+[circle-btn]
+  width 56px
+  height 56px
+  border-radius 50%
+
+[rect-btn]
+  min-width 56px
+  border-radius 2px
+
+.btn-group
+  padding 10px 0
