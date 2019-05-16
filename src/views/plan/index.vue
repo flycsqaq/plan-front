@@ -1,12 +1,19 @@
 <template>
-  <div class="plan">
+  <div
+    class="plan"
+  >
     <fy-verify>
-      <fy-rect-btn @click="changeState('add')">
+      <fy-rect-btn
+        @click="changeState('add')"
+      >
         添加
       </fy-rect-btn>
     </fy-verify>
     <ShowPlan />
-    <AddPlan v-if="state==='add'" @changeState="changeState($event)" />
+    <AddPlan
+      v-if="state==='add'"
+      @changeState="changeState($event)"
+    />
   </div>
 </template>
 <script>

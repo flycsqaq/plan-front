@@ -1,37 +1,120 @@
 <template>
-  <fy-paper ref="paper" class="single-plan" level="l1" :is-hover="false">
-    <template v-slot:show>
-      <fy-verify class="btn-group">
-        <fy-rect-btn :main="true" @click="handleChangeState(false)">修改</fy-rect-btn>
-        <fy-rect-btn class="delete" :main="false" @click="dialog=true">删除</fy-rect-btn>
-      </fy-verify>
-      <h2>{{ data.title }}</h2>
-      <fy-switch :value="data.isCompleted" />
-      <p>{{ data.start }}-{{ data.end }}</p>
-      <P>{{ data.description }}</p>
-    </template>
-    <template v-slot:hidden>
-      <form @submit.prevent>
-        <div class="btn-group">
-          <fy-rect-btn :main="true" @click="handlePut()">修改</fy-rect-btn>
-          <fy-rect-btn :main="false" @click="handleChangeState(true)">取消</fy-rect-btn>
-        </div>
-        <fy-connect-info ref="putConnect" type="put" />
-        <fy-input v-model="title" label="title" />
-        <fy-textarea v-model="description" label="description" />
-        <fy-input v-model="date" type="date" label="date" />
-        <fy-input v-model="start" type="time" label="start" />
-        <fy-input v-model="end" type="time" label="end" />
-        <div fy-form>
-          <div>isCompleted</div>
-          <fy-switch v-model="isCompleted" />
-        </div>
-      </form>
-    </template>
-    <fy-alert v-if="dialog" v-model="dialog" v-slot header="确定删除吗" @handleNext="handleDelete()">
-      <fy-connect-info ref="deleteConnect" type="delete" />
+  <div
+    class="single-plan"
+  >
+    <fy-paper
+      ref="paper"
+      level="l1"
+      :is-hover="false"
+    >
+      <template
+        v-slot:show
+      >
+        <fy-verify
+          class="btn-group"
+        >
+          <fy-rect-btn
+            :main="true"
+            @click="handleChangeState(false)"
+          >
+            修改
+          </fy-rect-btn>
+          <fy-rect-btn
+            class="delete"
+            :main="false"
+            @click="dialog=true"
+          >
+            删除
+          </fy-rect-btn>
+        </fy-verify>
+        <h2>
+          {{ data.title }}
+        </h2>
+        <fy-switch
+          :value="data.isCompleted"
+        />
+        <p>
+          {{ data.start }}-{{ data.end }}
+        </p>
+        <P>
+          {{ data.description }}
+        </p>
+      </template>
+      <template
+        v-slot:hidden
+      >
+        <form
+          @submit.prevent
+        >
+          <div
+            class="btn-group"
+          >
+            <fy-rect-btn
+              :main="true"
+              @click="handlePut()"
+            >
+              修改
+            </fy-rect-btn>
+            <fy-rect-btn
+              :main="false"
+              @click="handleChangeState(true)"
+            >
+              取消
+            </fy-rect-btn>
+          </div>
+          <fy-connect-info
+            ref="putConnect"
+            type="put"
+          />
+          <fy-input
+            v-model="title"
+            label="title"
+          />
+          <fy-textarea
+            v-model="description"
+            label="description"
+          />
+          <fy-input
+            v-model="date"
+            type="date"
+            label="date"
+          />
+          <fy-input
+            v-model="start"
+            type="time"
+            label="start"
+          />
+          <fy-input
+            v-model="end"
+            type="time"
+            label="end"
+          />
+          <div
+            fy-form
+          >
+            <div>
+              isCompleted
+            </div>
+            <fy-switch
+              v-model="isCompleted"
+            />
+          </div>
+        </form>
+      </template>
+    </fy-paper>
+    <fy-alert
+      v-if="dialog"
+      v-model="dialog"
+      v-slot
+      header="确定删除吗"
+      @handleNext="handleDelete()"
+    >
+      <fy-connect-info
+        ref="deleteConnect"
+        type="delete"
+      />
     </fy-alert>
-  </fy-paper>
+  </div>
 </template>
 <script>
 import { mapActions } from 'vuex'
@@ -93,4 +176,6 @@ export default {
 <style lang="stylus">
   .single-plan
     min-width 200px
+    .show
+      width calc(100% - 20px)
 </style>

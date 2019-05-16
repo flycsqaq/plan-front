@@ -1,14 +1,14 @@
 <template>
   <div class="sinmple-dialog">
     <div class="content">
-      <div paper>
+      <fy-paper v-slot:show :is-hover="false">
         <h2>{{ header }}</h2>
         <p>
           <slot />
         </p>
-      </div>
+      </fy-paper>
       <div class="group-btn">
-        <fy-rect-btn class="no" :main="false" @click="handleCancel()">坖消</fy-rect-btn>
+        <fy-rect-btn class="no" :main="false" @click="handleCancel()">取消</fy-rect-btn>
         <fy-rect-btn class="ok" @click="handleConfirm()">确定</fy-rect-btn>
       </div>
     </div>
@@ -40,10 +40,11 @@ export default {
 
 <style lang="stylus">
   .sinmple-dialog
+    display flex
+    justify-content center
+    align-items center
     .content
       display block
-      [paper]
-        height inherit
       .group-btn
         margin-top 20px
         .ok

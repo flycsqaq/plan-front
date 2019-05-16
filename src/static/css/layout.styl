@@ -23,14 +23,13 @@ html
       box-sizing border-box
       margin-top headerHeight
       padding 10px calc(50% - 700px)
-      display flex
       width 100%
       flex 1
       main
-        flex 1
         padding 0 5px
+        margin-right 150px
       .sidebar
-        flex-basis 200px
+        float right 
         padding 0 5px
     footer
       height footerHeight
@@ -40,13 +39,17 @@ for l in layout
   m = l[0]
   w = l[1]
   f = l[2]
+  r = l[3]
   @media (max-width: unit(m, 'px'))
     html
+      #app
       font-size f
-      header
-        padding 0 "calc(50% - %s)" % unit(w/2, 'px')
-      .content-container
-        padding 5px "calc(50% - %s)" % unit(w/2, 'px')
+        header
+          padding 0 "calc(50% - %s)" % unit(w/2, 'px')
+        .content-container
+          padding 5px "calc(50% - %s)" % unit(w/2, 'px')
+          main
+            margin-right unit(r, 'px')
 
 @media (max-width: 800px)
   html

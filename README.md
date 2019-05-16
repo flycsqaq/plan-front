@@ -285,3 +285,8 @@ data() {
 </fy-pagination>
 ```
 ### 5.6 others
+
+## 重构计划
+1. vue推荐的template
+2. 简洁的computed
+3. 简洁的methods

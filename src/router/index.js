@@ -96,7 +96,19 @@ const router = new Router({
       ]
     },
     {
-      path: '',
+      path: '/plug-in',
+      name: '插件',
+      component: () => import('@/components//middle.vue'),
+      children: [
+        {
+          path: 'lazyLoad',
+          name: '懒加载',
+          component: () => import('@/views/plugIn/lazyLoad.vue')
+        }
+      ]
+    },
+    {
+      path: '*',
       name: 'index',
       hidden: true,
       redirect: '/plan'

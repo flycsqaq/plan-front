@@ -2,10 +2,10 @@
   <div id="app">
     <LayoutHeader :style="{ backgroundColor: bgColor }" />
     <div class="content-container">
+      <LayoutSidebar class="sidebar" />
       <main>
         <router-view />
       </main>
-      <LayoutSidebar class="sidebar" />
     </div>
     <LayoutFooter :style="{ backgroundColor: bgColor }" />
   </div>

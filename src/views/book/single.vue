@@ -1,32 +1,34 @@
 <template>
-  <fy-paper ref="paper" level="l1" :is-hover="false">
-    <template v-slot:show>
-      <fy-verify class="btn-group">
-        <fy-rect-btn @click="handleChangeState(false)">修改</fy-rect-btn>
-        <fy-rect-btn @click="handleGo(value.id)">添加文章</fy-rect-btn>
-        <fy-rect-btn class="delete" :main="false" @click="dialog=true">删除</fy-rect-btn>
-      </fy-verify>
-      <p>{{ value.name }} - {{ value.author }}</p>
-      <h3 v-for="article in selectArticle" :key="article.id" @click="handleGoShow(article.id)">
-        {{ article.title }}
-      </h3>
-    </template>
-    <template v-slot:hidden>
-      <div class="btn-group">
-        <fy-rect-btn @click="handlePut()">修改</fy-rect-btn>
-        <fy-rect-btn :main="false" @click="handleChangeState(true)">取消</fy-rect-btn>
-      </div>
-      <fy-connect-info ref="putConnect" type="put" />
-      <form>
-        <fy-input v-model="name" label="name" />
-        <fy-input v-model="author" label="author" />
-        <fy-input v-model="picture" :required="false" label="picture" />
-      </form>
-    </template>
-    <fy-alert v-if="dialog" v-model="dialog" header="确定删除吗" @handleNext="handleDelete()">
-      <fy-connect-info ref="deleteConnect" type="delete" />
-    </fy-alert>
-  </fy-paper>
+  <div class="single-book">
+    <fy-paper ref="paper" level="l1" :is-hover="false">
+      <template v-slot:show>
+        <fy-verify class="btn-group">
+          <fy-rect-btn @click="handleChangeState(false)">修改</fy-rect-btn>
+          <fy-rect-btn @click="handleGo(value.id)">添加文章</fy-rect-btn>
+          <fy-rect-btn class="delete" :main="false" @click="dialog=true">删除</fy-rect-btn>
+        </fy-verify>
+        <p>{{ value.name }} - {{ value.author }}</p>
+        <h3 v-for="article in selectArticle" :key="article.id" class="article-title" @click="handleGoShow(article.id)">
+          {{ article.title }}
+        </h3>
+      </template>
+      <template v-slot:hidden>
+        <div class="btn-group">
+          <fy-rect-btn @click="handlePut()">修改</fy-rect-btn>
+          <fy-rect-btn :main="false" @click="handleChangeState(true)">取消</fy-rect-btn>
+        </div>
+        <fy-connect-info ref="putConnect" type="put" />
+        <form>
+          <fy-input v-model="name" label="name" />
+          <fy-input v-model="author" label="author" />
+          <fy-input v-model="picture" :required="false" label="picture" />
+        </form>
+      </template>
+      <fy-alert v-if="dialog" v-model="dialog" header="确定删除吗" @handleNext="handleDelete()">
+        <fy-connect-info ref="deleteConnect" type="delete" />
+      </fy-alert>
+    </fy-paper>
+  </div>
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex'
@@ -95,4 +97,10 @@ export default {
 </script>
 
 <style lang="stylus">
+  .single-book
+    .show
+      width calc(100% - 20px)
+    .article-title
+      cursor pointer
+
 </style>

@@ -67,6 +67,14 @@ export default {
     flexStyle: {
       type: Object,
       default: () => {}
+    },
+    orderInit: {
+      type: String,
+      default: ''
+    },
+    sequenceInit: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -75,8 +83,8 @@ export default {
       currentIndex: 1,
       option: [5, 10, 25, 50, 100],
       currentOption: 5,
-      order: 'id',
-      sequence: true,
+      order: this.orderInit || 'id',
+      sequence: this.sequenceInit,
       hover: 0
     }
   },
@@ -114,6 +122,9 @@ export default {
     },
     Dot() {
       const arr = this.showIndex
+      if (arr.length < 4) {
+        return [false, false]
+      }
       return [arr.indexOf(3) === -1, arr.indexOf(this.len.length - 2) === -1]
     },
     sortValue() {

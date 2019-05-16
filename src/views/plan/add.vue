@@ -1,18 +1,60 @@
 <template>
-  <fy-dialog width="400px" height="500px" padding="10px" @close="changeState()">
-    <template v-slot>
-      <form class="add-plan" @submit.prevent>
-        <fy-input v-model="title" label="title" />
-        <fy-textarea v-model="description" label="description" />
-        <fy-input v-model="date" type="date" label="date" />
-        <fy-input v-model="start" type="time" label="start" />
-        <fy-input v-model="end" type="time" label="end" />
-        <div fy-form>
-          <div>isCompleted</div>
-          <fy-switch v-model="isCompleted" />
+  <fy-dialog
+    width="400px"
+    height="500px"
+    padding="10px"
+    @close="changeState()"
+  >
+    <template
+      v-slot
+    >
+      <form
+        class="add-plan"
+        @submit.prevent
+      >
+        <fy-input
+          v-model="title"
+          label="title"
+        />
+        <fy-textarea
+          v-model="description"
+          label="description"
+        />
+        <fy-input
+          v-model="date"
+          type="date"
+          label="date"
+        />
+        <fy-input
+          v-model="start"
+          type="time"
+          label="start"
+        />
+        <fy-input
+          v-model="end"
+          type="time"
+          label="end"
+        />
+        <div
+          fy-form
+        >
+          <div>
+            isCompleted
+          </div>
+          <fy-switch
+            v-model="isCompleted"
+          />
         </div>
-        <fy-connect-info ref="connect" type="post" />
-        <fy-circle-btn circle-btn @click="handlePost()">上传</fy-circle-btn>
+        <fy-connect-info
+          ref="connect"
+          type="post"
+        />
+        <fy-circle-btn
+          circle-btn
+          @click="handlePost()"
+        >
+          上传
+        </fy-circle-btn>
       </form>
     </template>
   </fy-dialog>

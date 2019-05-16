@@ -29,7 +29,7 @@ const actions = {
           dispatch('getArticle')
             .then(() => resolve())
             .catch(error => reject(error))
-        }).then(error => reject(error))
+        }).catch(error => reject(error))
     })
   },
   putArticle({ dispatch }, articleInfo) {
@@ -40,7 +40,7 @@ const actions = {
           dispatch('getArticle')
             .then(() => resolve())
             .catch(error => reject(error))
-        }).then(error => reject(error))
+        }).catch(error => reject(error))
     })
   },
   deleteArticle({ dispatch }, id) {
@@ -50,7 +50,7 @@ const actions = {
           dispatch('getArticle')
             .then(() => resolve())
             .catch(error => reject(error))
-        }).then(error => reject(error))
+        }).catch(error => reject(error))
     })
   }
 }

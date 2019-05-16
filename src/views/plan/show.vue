@@ -1,9 +1,21 @@
 <template>
-  <fy-pagination v-slot:default="defaultData" :value="plansSort" :orders="['date']">
+  <fy-pagination
+    v-slot:default="defaultData"
+    order-init="date"
+    :sequence-init="false"
+    :value="plansSort"
+    :orders="['date']"
+  >
     <section>
       <h1>{{ defaultData.defaultData.date }}</h1>
-      <div class="flex-container">
-        <SingleShow v-for="i in defaultData.defaultData.plans" :key="i.id" :data="i" />
+      <div
+        class="flex-container"
+      >
+        <SingleShow
+          v-for="i in defaultData.defaultData.plans"
+          :key="i.id"
+          :data="i"
+        />
       </div>
     </section>
   </fy-pagination>
@@ -69,7 +81,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .flex-container
     min-height 300px
 </style>
