@@ -24,10 +24,10 @@
           <fy-input v-model="picture" :required="false" label="picture" />
         </form>
       </template>
-      <fy-alert v-if="dialog" v-model="dialog" header="确定删除吗" @handleNext="handleDelete()">
-        <fy-connect-info ref="deleteConnect" type="delete" />
-      </fy-alert>
     </fy-paper>
+    <fy-alert v-if="dialog" v-model="dialog" header="确定删除吗" @handleNext="handleDelete()">
+      <fy-connect-info ref="deleteConnect" type="delete" />
+    </fy-alert>
   </div>
 </template>
 <script>
